@@ -17,7 +17,11 @@ module.exports = {
     /* 配置响应的头部信息 */
     headers: {
       'X-Access-Token': 'abc'
-    }
+    },
+    /* 代理服务器 */
+    proxy: {
+      '/api': 'http://localhost:4001',
+    },
   },
 
   output: {
