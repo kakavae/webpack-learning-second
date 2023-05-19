@@ -20,7 +20,12 @@ module.exports = {
     },
     /* 代理服务器 */
     proxy: {
-      '/api': 'http://localhost:4001',
+      '/api': {
+        target: 'http://localhost:4001',
+        pathRewrite: {
+          '^/api': '',
+        }
+      }
     },
   },
 
