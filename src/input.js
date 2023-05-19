@@ -1,8 +1,8 @@
 const func = () => {
-  const app = document.querySelector('#app')
-  app.innerHTML = '<input type="text" value="ab456789" />'
-}
+  const app = document.querySelector('#app');
+  app.innerHTML = '<input type="text" value="ab456789" />';
+};
 
-func()
+func();
 
-// export default func
+// export default func;
