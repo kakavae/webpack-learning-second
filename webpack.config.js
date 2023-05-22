@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const ESLintPlugin = require('eslint-webpack-plugin');
+const TestPlugin = require('./plugin/test-plugin');
+const FilePlugin = require('./plugin/file-plugin');
 
 module.exports = {
   mode: 'development',
@@ -69,6 +71,18 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      /* 对less资源使用自定义loader */
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: './loader/style-loader.js',
+          },
+          {
+            loader: './loader/less-loader.js',
+          },
+        ],
+      },
     ],
   },
 
@@ -80,5 +94,9 @@ module.exports = {
 
     /* eslint报错的时候在浏览器里面也会显示错误 */
     new ESLintPlugin(),
+    new TestPlugin({
+      name: 'plugin',
+    }),
+    new FilePlugin(),
   ],
 };
